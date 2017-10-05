@@ -1,8 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +13,8 @@ public class DashboardPage extends Page{
     private By logoutButton = By.id("header_logout");
     private By menu = By.cssSelector("a.title.has_submenu");
     private By menu_stat=By.partialLinkText("Статистика");
+    private By categories=By.id("subtab-AdminCategories");
+    private By catalog=By.partialLinkText("Каталог");
 
 
     public DashboardPage(WebDriver driver){
@@ -27,7 +28,7 @@ public class DashboardPage extends Page{
         driver.findElement(logoutImage).click();
     }
 
-    public void clicklogoutButton(){
+    public void clickLogoutButton(){
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions. elementToBeClickable(logoutButton));
 
@@ -80,8 +81,20 @@ public class DashboardPage extends Page{
         delay();
         newTitle=driver.getTitle();
         System.out.println(oldTitle.equals(newTitle));
+    }
 
+    public void  clickCategories(){
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(catalog));
 
+        WebElement webElement=driver.findElement(catalog);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(webElement);
+        action.perform();
+
+        wait.until(ExpectedConditions.elementToBeClickable(categories));
+        driver.findElement(categories).click();
     }
 
     private void delay(){

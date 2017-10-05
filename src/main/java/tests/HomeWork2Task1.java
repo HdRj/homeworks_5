@@ -23,7 +23,7 @@ public class HomeWork2Task1 extends BaseTest {
         DashboardPage dashboardPage =new DashboardPage(driver);
 
         dashboardPage.clickLogoutImage();
-        dashboardPage.clicklogoutButton();
+        dashboardPage.clickLogoutButton();
 
     }
 

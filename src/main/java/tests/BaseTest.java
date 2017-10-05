@@ -5,13 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import utils.Browsers;
+import utils.EventHandler;
 
 import java.io.File;
 
 public abstract class BaseTest {
 
-    protected WebDriver driver;
+    private WebDriver wDriver;
+    protected EventFiringWebDriver driver;
 
     public BaseTest(Browsers browser){
         switch (browser) {
@@ -19,21 +22,26 @@ public abstract class BaseTest {
                 System.setProperty(
                         "webdriver.gecko.driver",
                         new File(BaseTest.class.getResource("/geckodriver.exe").getFile()).getPath());
-                driver = new FirefoxDriver();
+                wDriver = new FirefoxDriver();
                 break;
             case IE:
                 System.setProperty(
                         "webdriver.ie.driver",
                         new File(BaseTest.class.getResource("/IEDriverServer.exe").getFile()).getPath());
-                driver = new InternetExplorerDriver();
+                wDriver = new InternetExplorerDriver();
                 break;
             case Chrome:
             default:
                 System.setProperty(
                         "webdriver.chrome.driver",
                         new File(BaseTest.class.getResource("/chromedriver.exe").getFile()).getPath());
-                driver = new ChromeDriver();
+                wDriver  = new ChromeDriver();
         }
+
+        driver = new EventFiringWebDriver(wDriver);
+
+        driver.register(new EventHandler());
+
     }
 
     public abstract void  run();
