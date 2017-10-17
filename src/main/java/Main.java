@@ -1,10 +1,11 @@
-import tests.BaseTest;
-import tests.HomeWork2Task1;
-import tests.HomeWork2Task2;
-import tests.HomeWork3;
+import org.testng.annotations.*;
+import tests.*;
 import utils.Browsers;
 
+
 public class Main {
+
+    private BaseTest test;
 
     public static void main(String [] args){
         //Homework 2 part 1
@@ -21,12 +22,26 @@ public class Main {
         */
 
         //Homeweork 3
+        /*
         BaseTest test3=new HomeWork3(Browsers.Chrome);
         test3.run();
         test3.finish(10000);
-
-
-
-
+        */
     }
+    /*
+    @Parameters({"nameBrowser"})
+    @BeforeTest
+    public void test0(Browsers browser){
+        this.test=new HomeWork4(browser);
+    }
+
+    @Test
+    public void test1(){
+        this.test.run();
+    }
+    @AfterTest
+    public void test2(){
+        this.test.finish(5000);
+    }
+    */
 }

@@ -14,6 +14,7 @@ public class HomeWork3 extends BaseTest {
 
     @Override
     public void run() {
+        String nameOfCategory="Тестова категорія";
         //1
         LoginPage loginPage=new LoginPage(driver);
 
@@ -30,10 +31,10 @@ public class HomeWork3 extends BaseTest {
         categoriesPage.clickNewCategory();
         //4
         AddCategoryPage addCategoryPage=new AddCategoryPage(driver);
-        addCategoryPage.fillCategoryNameInput();
+        addCategoryPage.fillCategoryNameInput(nameOfCategory);
         addCategoryPage.clickSaveButton();
 
-        categoriesPage=new CategoriesPage(driver);
+        categoriesPage=new CategoriesPage(driver, nameOfCategory);
         if(categoriesPage.isAddedCategory()){
             System.out.println("New category created successfully!");
         } else {
@@ -42,7 +43,7 @@ public class HomeWork3 extends BaseTest {
         //5
         categoriesPage.sendCategoryFilter();
 
-        categoriesPage=new CategoriesPage(driver);
+        categoriesPage=new CategoriesPage(driver, nameOfCategory);
         if(categoriesPage.isTableCategory()){
             System.out.println("New category is in the table!");
         } else{

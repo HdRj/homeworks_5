@@ -14,11 +14,17 @@ public class CategoriesPage extends Page {
         super(driver);
     }
 
+    public CategoriesPage(WebDriver driver, String nameOfCategory){
+        super(driver);
+        this.nameOfCategory=nameOfCategory;
+    }
+
     private By newCategory = By.id("page-header-desc-category-new_category");
     private By resultInfo=By.xpath("//div[@class='alert alert-success']");
     private By filterCategory=By.name("categoryFilter_name");
     private By tableNameCategory=By.xpath("//td[normalize-space(text())='"+
-            AddCategoryPage.getNameOfCategory()+"']");
+            this.nameOfCategory+"']");
+    private String nameOfCategory;
     //private By tableNameCategory=By.xpath("//td[normalize-space(text())='Тестова категорія']");
 
     public void clickNewCategory(){
@@ -42,7 +48,7 @@ public class CategoriesPage extends Page {
     public void sendCategoryFilter(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(filterCategory));
-        driver.findElement(filterCategory).sendKeys(AddCategoryPage.getNameOfCategory()+ Keys.ENTER);
+        driver.findElement(filterCategory).sendKeys(this.nameOfCategory+ Keys.ENTER);
     }
 
     public boolean isTableCategory(){

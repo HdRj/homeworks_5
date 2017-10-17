@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite1" verbose="1" parallel="none">
+    <!--
+    <test name="IE">
+        <parameter name="nameBrowser" value="IE"/>
+        <parameter name="finishDelay" value="5000"/>
+        <classes>
+            <class name="tests.HomeWork4"/>
+        </classes>
+    </test>
+    <test name="FireFox">
+        <parameter name="nameBrowser" value="Firefox"/>
+        <parameter name="finishDelay" value="5000"/>
+        <classes>
+            <class name="tests.HomeWork4"/>
+        </classes>
+    </test>
+    <test name="Chrome">
+        <parameter name="nameBrowser" value="Chrome"/>
+        <parameter name="finishDelay" value="5000"/>
+        <classes>
+            <class name="tests.HomeWork4"/>
+        </classes>
+    </test>
+    -->
+    <test name="Chrome">
+        <parameter name="nameBrowser" value="Chrome"/>
+        <parameter name="finishDelay" value="5000"/>
+        <parameter name="mobile" value="false"/>
+        <classes>
+            <class name="tests.HomeWork5"/>
+        </classes>
+    </test>
+    <test name="Chrome Mobile">
+        <parameter name="nameBrowser" value="Chrome"/>
+        <parameter name="finishDelay" value="5000"/>
+        <parameter name="mobile" value="true"/>
+        <classes>
+            <class name="tests.HomeWork5"/>
+        </classes>
+    </test>
+    <test name="IE">
+        <parameter name="nameBrowser" value="IE"/>
+        <parameter name="finishDelay" value="5000"/>
+        <parameter name="mobile" value="false"/>
+        <classes>
+            <class name="tests.HomeWork5"/>
+        </classes>
+    </test>
+    <test name="FireFox">
+        <parameter name="nameBrowser" value="Firefox"/>
+        <parameter name="finishDelay" value="5000"/>
+        <parameter name="mobile" value="false"/>
+        <classes>
+            <class name="tests.HomeWork5"/>
+        </classes>
+    </test>
+
+</suite>

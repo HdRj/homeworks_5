@@ -12,9 +12,9 @@ public class AddCategoryPage extends Page {
 
     private By categoryName=By.id("name_1");
     private By saveNewCategory = By.id("category_form_submit_btn");
-    private static String nameOfCategory = "Тестова категорія";
+    //private static String nameOfCategory = "Тестова категорія";
 
-    public void fillCategoryNameInput(){
+    public void fillCategoryNameInput(String nameOfCategory){
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(categoryName));
 
@@ -29,7 +29,7 @@ public class AddCategoryPage extends Page {
         driver.findElement(saveNewCategory).click();
     }
 
-    static String getNameOfCategory() {
+    /*static String getNameOfCategory() {
         return nameOfCategory;
-    }
+    }*/
 }
